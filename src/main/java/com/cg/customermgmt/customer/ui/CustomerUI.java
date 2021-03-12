@@ -24,8 +24,9 @@ public class CustomerUI {
 		Customer findCustomer = service.findById(4L);
 		display(findCustomer);
 		
-		service.addAmount(2L, 1000.0);
-		display(tanisha);
+		Long tanishaId = tanisha.getId();
+		Customer tanishaAmount = service.addAmount(tanishaId, 1000.0);
+		display(tanishaAmount);
 		
 	}
 	
