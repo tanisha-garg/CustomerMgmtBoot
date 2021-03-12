@@ -18,11 +18,14 @@ public class CustomerUI {
 		Customer tanisha = service.createCustomer("Tanisha");
 		display(tanisha);
 		
-		Customer pallavi = service.createCustomer("Pallavi");
+		Customer pallavi = service.createCustomer("Palllavi");
 		display(pallavi);
 		
-		Customer findCustomer = service.findById(3L);
+		Customer findCustomer = service.findById(4L);
 		display(findCustomer);
+		
+		service.addAmount(2L, 1000.0);
+		display(tanisha);
 		
 	}
 	

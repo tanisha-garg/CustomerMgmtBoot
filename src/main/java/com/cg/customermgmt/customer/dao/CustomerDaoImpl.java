@@ -28,10 +28,11 @@ public class CustomerDaoImpl implements ICustomerDao{
 		return customer;
 	}
 
+	@Transactional
 	@Override
 	public Customer update(Customer customer) {
-		
-		return null;
+		entityManager.merge(customer);
+		return customer;
 	}
 
 }

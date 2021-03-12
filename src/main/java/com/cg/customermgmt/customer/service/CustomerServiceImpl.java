@@ -35,6 +35,15 @@ public class CustomerServiceImpl implements ICustomerService{
 		Customer customer = dao.findById(customerId);
 		return customer;
 	}
+
+	@Transactional
+	@Override
+	public Customer addAmount(Long customerId, double amount) {
+		Customer customer = dao.findById(customerId);
+		customer.getAccount().setBalance(amount);
+		customer = dao.update(customer);
+		return customer;
+	}
 	
 	
 	

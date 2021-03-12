@@ -7,5 +7,7 @@ public interface ICustomerService {
 	Customer findById(Long customerId);
 	
 	Customer createCustomer(String name);	
+	
+	Customer addAmount(Long customerId, double amount);
 
 }
