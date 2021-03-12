@@ -24,8 +24,8 @@ public class CustomerDaoImpl implements ICustomerDao{
 
 	@Override
 	public Customer findById(Long customerId) {
-		
-		return null;
+		Customer customer = entityManager.find(Customer.class, customerId);
+		return customer;
 	}
 
 	@Override

@@ -29,6 +29,13 @@ public class CustomerServiceImpl implements ICustomerService{
 		dao.add(customer);
 		return customer;
 	}
+
+	@Override
+	public Customer findById(Long customerId) {
+		Customer customer = dao.findById(customerId);
+		return customer;
+	}
+	
 	
 	
 
