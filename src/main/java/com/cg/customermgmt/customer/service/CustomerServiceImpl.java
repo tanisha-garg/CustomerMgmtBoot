@@ -1,6 +1,7 @@
 package com.cg.customermgmt.customer.service;
 
 import java.time.LocalDateTime;
+
 import java.util.*;
 
 import javax.persistence.EntityManager;
@@ -17,16 +18,11 @@ public class CustomerServiceImpl implements ICustomerService{
 	
 	@Autowired
 	ICustomerDao dao;
-	
-	@Autowired
-	EntityManager entityManager;
 
 	@Transactional
 	@Override
 	public Customer createCustomer(String name) {
-		LocalDateTime now = LocalDateTime.now();
-		Account account = new Account(0, now);
-		entityManager.persist(account);
+		Account account = new Account();
 		Customer customer = new Customer(name, account);
 		dao.add(customer);
 		return customer;

@@ -16,7 +16,7 @@ public class Account {
 	private LocalDateTime created;
 	
 	public Account() {
-		
+		this(0,null);
 	}
 	
 	public Account(double balance, LocalDateTime created) {
