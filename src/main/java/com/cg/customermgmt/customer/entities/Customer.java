@@ -3,8 +3,12 @@ package com.cg.customermgmt.customer.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.cg.customermgmt.items.entities.Item;
+
+import java.util.*;
 @Entity
 public class Customer {
 	
@@ -16,6 +20,9 @@ public class Customer {
 	@OneToOne
 	private Account account;
 	
+//	@OneToMany
+//	private Set<Item> boughtItems;
+	
 	public Customer() {
 		
 	}
@@ -23,6 +30,7 @@ public class Customer {
 	public Customer(String name, Account account) {
 		this.name = name;
 		this.account = account;
+//		this.boughtItems = boughtItems;
 	}
 	
 	public Long getId() {
@@ -48,7 +56,15 @@ public class Customer {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	
+
+//	public Set<Item> getBoughtItems() {
+//		return boughtItems;
+//	}
+//
+//	public void setBoughtItems(Set<Item> boughtItems) {
+//		this.boughtItems = boughtItems;
+//	}
+//	
 	
 
 }

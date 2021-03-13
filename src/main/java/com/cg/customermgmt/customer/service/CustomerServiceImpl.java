@@ -1,6 +1,7 @@
 package com.cg.customermgmt.customer.service;
 
 import java.time.LocalDateTime;
+import java.util.*;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cg.customermgmt.customer.dao.ICustomerDao;
 import com.cg.customermgmt.customer.entities.Account;
 import com.cg.customermgmt.customer.entities.Customer;
+import com.cg.customermgmt.items.entities.Item;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService{
@@ -44,6 +46,13 @@ public class CustomerServiceImpl implements ICustomerService{
 		customer = dao.update(customer);
 		return customer;
 	}
+
+//	@Override
+//	public Set<Item> itemsBoughtByCustomer(Long customerId) {
+//		Customer customer = entityManager.find(Customer.class, customerId);
+//		Set<Item> itemSet = customer.getBoughtItems();
+//		return itemSet;
+//	}
 	
 	
 	
