@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cg.customermgmt.items.entities.Item;
+import com.cg.customermgmt.items.exceptions.ItemNotFoundException;
 
 @Repository
 public class ItemDaoImpl implements IItemDao{
@@ -31,6 +32,9 @@ public class ItemDaoImpl implements IItemDao{
 	@Override
 	public Item findById(String itemId) {
 		Item item = entityManager.find(Item.class, itemId);
+		if(item == null) {
+			throw new ItemNotFoundException("Item with id "+itemId+" not found");
+		}
 		return item;
 	}
 

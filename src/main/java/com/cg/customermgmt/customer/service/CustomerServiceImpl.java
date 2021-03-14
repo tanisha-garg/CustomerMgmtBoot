@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cg.customermgmt.customer.dao.ICustomerDao;
 import com.cg.customermgmt.customer.entities.Account;
 import com.cg.customermgmt.customer.entities.Customer;
+import com.cg.customermgmt.customer.exceptions.InvalidAmountException;
 import com.cg.customermgmt.customer.exceptions.InvalidCustomerNameException;
 import com.cg.customermgmt.items.entities.Item;
 
@@ -39,6 +40,7 @@ public class CustomerServiceImpl implements ICustomerService{
 	@Transactional
 	@Override
 	public Customer addAmount(Long customerId, double amount) {
+		validateAmount(amount);
 		Customer customer = dao.findById(customerId);
 		customer.getAccount().setBalance(amount);
 		customer = dao.update(customer);
@@ -55,6 +57,12 @@ public class CustomerServiceImpl implements ICustomerService{
 	public void validateName(String name) {
 		if(name == null || name.isEmpty()) {
 			throw new InvalidCustomerNameException("Name cannot be null or empty");
+		}
+	}
+	
+	public void validateAmount(double amount) {
+		if(amount < 0) {
+			throw new InvalidAmountException("Amount cannot be less than 0");
 		}
 	}
 	

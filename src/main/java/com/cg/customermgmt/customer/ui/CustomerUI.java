@@ -23,7 +23,7 @@ public class CustomerUI {
 		Customer tanisha = service.createCustomer("Tanisha");
 		display(tanisha);
 		
-		Customer pallavi = service.createCustomer("Palllavi");
+		Customer pallavi = service.createCustomer("Pallavi");
 		display(pallavi);
 		
 		System.out.println("Customer with id 4");

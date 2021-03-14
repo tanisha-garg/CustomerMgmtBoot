@@ -14,6 +14,7 @@ import com.cg.customermgmt.customer.dao.ICustomerDao;
 import com.cg.customermgmt.customer.entities.Customer;
 import com.cg.customermgmt.items.dao.IItemDao;
 import com.cg.customermgmt.items.entities.Item;
+import com.cg.customermgmt.items.exceptions.InvalidPriceException;
 
 @Service
 public class ItemServiceImpl implements IItemService{
@@ -37,6 +38,7 @@ public class ItemServiceImpl implements IItemService{
 	@Transactional
 	@Override
 	public Item create(double price, String description) {
+		validatePrice(price);
 		String itemId = generateItemId();
 		LocalDateTime now = LocalDateTime.now();
 		Item item = new Item(price, description);
@@ -66,6 +68,10 @@ public class ItemServiceImpl implements IItemService{
 		return updatedItem;
 	}
 	
-	
+	public void validatePrice(double price) {
+		if(price < 0) {
+			throw new InvalidPriceException("Price cannot be less than 0");
+		}
+	}
 
 }

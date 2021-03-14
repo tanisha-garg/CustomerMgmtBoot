@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cg.customermgmt.customer.entities.Account;
 import com.cg.customermgmt.customer.entities.Customer;
+import com.cg.customermgmt.customer.exceptions.CustomerNotFoundException;
 
 @Repository
 public class CustomerDaoImpl implements ICustomerDao{
@@ -32,6 +33,9 @@ public class CustomerDaoImpl implements ICustomerDao{
 	@Override
 	public Customer findById(Long customerId) {
 		Customer customer = entityManager.find(Customer.class, customerId);
+		if(customer == null) {
+			throw new CustomerNotFoundException("Customer with id "+customerId+" doesn't exist");
+		}
 		return customer;
 	}
 
