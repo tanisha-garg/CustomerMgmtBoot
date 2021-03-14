@@ -24,7 +24,7 @@ public class ItemDaoImpl implements IItemDao{
 	@Transactional
 	@Override
 	public Item update(Item item) {
-		entityManager.merge(item);
+		item = entityManager.merge(item);
 		return item;
 	}
 

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.cg.customermgmt.customer.entities.Customer;
@@ -17,18 +18,17 @@ public class Item {
 	private String description;
 	private LocalDateTime addedDate;
 	
-//	@OneToOne
-//	private Customer boughtBy;
+	@ManyToOne
+	private Customer boughtBy;
 	
 	public Item() {
 		
 	}
 	
-	public Item(String item, double price, String description, LocalDateTime addedDate) {
-		this.item = item;
+	public Item(double price, String description) {
 		this.price = price;
 		this.description = description;
-		this.addedDate = addedDate;
+		this.boughtBy = null;
 	}
 
 	public String getItem() {
@@ -63,13 +63,13 @@ public class Item {
 		this.addedDate = addedDate;
 	}
 
-//	public Customer getBoughtBy() {
-//		return boughtBy;
-//	}
-//
-//	public void setBoughtBy(Customer boughtBy) {
-//		this.boughtBy = boughtBy;
-//	}
+	public Customer getBoughtBy() {
+		return boughtBy;
+	}
+
+	public void setBoughtBy(Customer boughtBy) {
+		this.boughtBy = boughtBy;
+	}
 	
 	
 

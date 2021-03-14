@@ -1,6 +1,7 @@
 package com.cg.customermgmt.customer.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -20,17 +21,17 @@ public class Customer {
 	@OneToOne
 	private Account account;
 	
-//	@OneToMany
-//	private Set<Item> boughtItems;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Item> boughtItems;
 	
 	public Customer() {
 		
 	}
 	
-	public Customer(String name, Account account) {
+	public Customer(String name, Account account, Set<Item>boughtItems) {
 		this.name = name;
 		this.account = account;
-//		this.boughtItems = boughtItems;
+		this.boughtItems = boughtItems;
 	}
 	
 	public Long getId() {
@@ -57,14 +58,14 @@ public class Customer {
 		this.account = account;
 	}
 
-//	public Set<Item> getBoughtItems() {
-//		return boughtItems;
-//	}
-//
-//	public void setBoughtItems(Set<Item> boughtItems) {
-//		this.boughtItems = boughtItems;
-//	}
-//	
+	public Set<Item> getBoughtItems() {
+		return boughtItems;
+	}
+
+	public void setBoughtItems(Set<Item> boughtItems) {
+		this.boughtItems = boughtItems;
+	}
+	
 	
 
 }

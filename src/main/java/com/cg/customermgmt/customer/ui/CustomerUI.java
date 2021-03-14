@@ -46,6 +46,10 @@ public class CustomerUI {
 		Item findItem = itemService.findById(itemId);
 		displayItem(findItem);
 		
+		System.out.println("Buy an item");
+		Item buyChocolate = itemService.buyItem(itemId, tanishaId);
+		displayItem(buyChocolate);
+		
 	}
 	
 	void display(Customer customer) {
@@ -55,7 +59,8 @@ public class CustomerUI {
 	}
 	
 	void displayItem(Item item) {
-		System.out.println("Item "+item.getItem()+" "+item.getDescription()+" "+item.getPrice()+" "+item.getAddedDate());
+		System.out.println("Item "+item.getItem()+" "+item.getDescription()+" "+item.getPrice()+" "
+				+item.getAddedDate());
 	}
 
 }

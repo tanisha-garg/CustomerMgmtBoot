@@ -38,7 +38,7 @@ public class CustomerDaoImpl implements ICustomerDao{
 	@Transactional
 	@Override
 	public Customer update(Customer customer) {
-		entityManager.merge(customer);
+		customer = entityManager.merge(customer);
 		return customer;
 	}
 

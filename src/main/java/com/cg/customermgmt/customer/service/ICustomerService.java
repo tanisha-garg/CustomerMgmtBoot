@@ -13,6 +13,6 @@ public interface ICustomerService {
 	
 	Customer addAmount(Long customerId, double amount);
 	
-//	Set<Item> itemsBoughtByCustomer(Long customerId);
+	Set<Item> itemsBoughtByCustomer(Long customerId);
 
 }

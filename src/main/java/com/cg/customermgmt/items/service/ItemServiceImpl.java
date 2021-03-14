@@ -2,6 +2,7 @@ package com.cg.customermgmt.items.service;
 
 import java.time.LocalDateTime;
 import java.util.Random;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -9,6 +10,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.customermgmt.customer.dao.ICustomerDao;
+import com.cg.customermgmt.customer.entities.Customer;
 import com.cg.customermgmt.items.dao.IItemDao;
 import com.cg.customermgmt.items.entities.Item;
 
@@ -17,6 +20,9 @@ public class ItemServiceImpl implements IItemService{
 	
 	@Autowired
 	IItemDao itemDao;
+	
+	@Autowired
+	ICustomerDao dao;
 	
 	@Autowired
 	EntityManager entityManager;
@@ -33,7 +39,9 @@ public class ItemServiceImpl implements IItemService{
 	public Item create(double price, String description) {
 		String itemId = generateItemId();
 		LocalDateTime now = LocalDateTime.now();
-		Item item = new Item(itemId, price, description, now);
+		Item item = new Item(price, description);
+		item.setItem(itemId);
+		item.setAddedDate(now);
 		itemDao.add(item);
 		return item;
 	}
@@ -44,10 +52,18 @@ public class ItemServiceImpl implements IItemService{
 		return item;
 	}
 
+	@Transactional
 	@Override
 	public Item buyItem(String itemId, Long customerId) {
-		// TODO Auto-generated method stub
-		return null;
+		Customer customer = dao.findById(customerId);
+		Item item = itemDao.findById(itemId);
+		item.setBoughtBy(customer);
+		Item updatedItem = itemDao.update(item);
+		Set<Item> itemSet = customer.getBoughtItems();
+		itemSet.add(item);
+		customer.setBoughtItems(itemSet);
+		dao.update(customer);
+		return updatedItem;
 	}
 	
 	

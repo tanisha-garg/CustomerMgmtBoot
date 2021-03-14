@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 
 import java.util.*;
 
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cg.customermgmt.customer.dao.ICustomerDao;
 import com.cg.customermgmt.customer.entities.Account;
 import com.cg.customermgmt.customer.entities.Customer;
+import com.cg.customermgmt.customer.exceptions.InvalidCustomerNameException;
 import com.cg.customermgmt.items.entities.Item;
 
 @Service
@@ -22,8 +22,10 @@ public class CustomerServiceImpl implements ICustomerService{
 	@Transactional
 	@Override
 	public Customer createCustomer(String name) {
+		validateName(name);
 		Account account = new Account();
-		Customer customer = new Customer(name, account);
+		Set<Item> set = new HashSet<>();
+		Customer customer = new Customer(name, account, set);
 		dao.add(customer);
 		return customer;
 	}
@@ -43,14 +45,18 @@ public class CustomerServiceImpl implements ICustomerService{
 		return customer;
 	}
 
-//	@Override
-//	public Set<Item> itemsBoughtByCustomer(Long customerId) {
-//		Customer customer = entityManager.find(Customer.class, customerId);
-//		Set<Item> itemSet = customer.getBoughtItems();
-//		return itemSet;
-//	}
+	@Override
+	public Set<Item> itemsBoughtByCustomer(Long customerId) {
+		Customer customer = dao.findById(customerId);
+		Set<Item> itemSet = customer.getBoughtItems();
+		return itemSet;
+	}
 	
-	
+	public void validateName(String name) {
+		if(name == null || name.isEmpty()) {
+			throw new InvalidCustomerNameException("Name cannot be null or empty");
+		}
+	}
 	
 
 }
