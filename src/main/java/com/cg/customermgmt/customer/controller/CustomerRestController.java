@@ -25,7 +25,7 @@ public class CustomerRestController {
 	@Autowired
 	private CustomerUtil util;
 	
-	@GetMapping(value = "/byId/{id}")
+	@GetMapping(value = "/findById/{id}")
 	public CustomerDetails getDetailsById(@PathVariable("id") Long customerId) {
 		Customer customer = service.findById(customerId);
 		CustomerDetails details = util.toDetails(customer);

@@ -24,7 +24,7 @@ public class ItemRestController {
 	@Autowired
 	ItemUtil util;
 	
-	@GetMapping(value = "/byId/{id}")
+	@GetMapping(value = "/findById/{id}")
 	public ItemDetails getItemById(@PathVariable("id") String itemId) {
 		Item item = itemService.findById(itemId);
 		ItemDetails details = util.toDetails(item);
