@@ -22,10 +22,15 @@ public class CustomerRestController {
 	private CustomerUtil util;
 	
 	@GetMapping(value = "/byId/{id}")
-	public CustomerDetails getDetailsById(@PathVariable("id") Long employeeId) {
-		Customer customer = service.findById(employeeId);
+	public CustomerDetails getDetailsById(@PathVariable("id") Long customerId) {
+		Customer customer = service.findById(customerId);
 		CustomerDetails details = util.toDetails(customer);
 		return details;
 	}
+	
+//	@GetMapping(value = "/itemsBoughtBy/{id}")
+//	public ItemDetails getItemDetails(@PathVariable("id")Long customerId) {
+//		
+//	}
 
 }
