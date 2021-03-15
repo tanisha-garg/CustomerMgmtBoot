@@ -11,13 +11,8 @@ import java.util.stream.Collectors;
 public class CustomerUtil {
 	
 	public CustomerDetails toDetails(Customer customer) {
-		CustomerDetails customerDetails = new CustomerDetails(customer.getId(), customer.getName());
+		CustomerDetails customerDetails = new CustomerDetails(customer.getId(), customer.getName(), customer.getAccount().getAccountId(), customer.getAccount().getBalance());
 		return customerDetails;
-	}
-	
-	public List<CustomerDetails> toDetailsList(Collection<Customer> customers){
-		List<CustomerDetails> resultList = customers.stream().map(cust -> toDetails(cust)).collect(Collectors.toList());
-		return resultList;
 	}
 
 }

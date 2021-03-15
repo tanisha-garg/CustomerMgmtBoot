@@ -1,17 +1,23 @@
 package com.cg.customermgmt.customer.dto;
 
+import com.cg.customermgmt.customer.entities.Account;
+
 public class CustomerDetails {
 	
 	private Long id;
 	private String name;
+	private Long accountId;
+	private double balance;
 	
 	public CustomerDetails() {
 		
 	}
 	
-	public CustomerDetails(Long id, String name) {
+	public CustomerDetails(Long id, String name, Long accountId, double balance) {
 		this.id = id;
 		this.name = name;
+		this.accountId = accountId;
+		this.balance = balance;
 	}
 
 	public Long getId() {
@@ -29,6 +35,23 @@ public class CustomerDetails {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	
 	
 	
 

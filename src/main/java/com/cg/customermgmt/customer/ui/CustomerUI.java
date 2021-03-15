@@ -1,5 +1,7 @@
 package com.cg.customermgmt.customer.ui;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -36,19 +38,21 @@ public class CustomerUI {
 		display(tanishaAmount);
 		
 		Item chocolate = itemService.create(100.0, "Chocolate");
-		displayItem(chocolate);
+		//displayItem(chocolate);
 		
 		Item rice = itemService.create(200.0, "Rice");
-		displayItem(rice);
+		//displayItem(rice);
 		
 		System.out.println("Finding an item with id");
 		String itemId = chocolate.getItem();
 		Item findItem = itemService.findById(itemId);
-		displayItem(findItem);
+		//displayItem(findItem);
 		
 		System.out.println("Buy an item");
 		Item buyChocolate = itemService.buyItem(itemId, tanishaId);
+		tanisha = service.findById(tanishaId);
 		displayItem(buyChocolate);
+		display(tanisha);
 		
 	}
 	
@@ -56,11 +60,15 @@ public class CustomerUI {
 		Account account = customer.getAccount();
 		System.out.println("Customer "+customer.getId()+" "+customer.getName()+" "+account.getAccountId()+" "
 		+account.getBalance()+" "+account.getCreated());
+		Set<Item> itemSet = customer.getBoughtItems();
+		for(Item item:itemSet) {
+			System.out.println(item.getItem()+" "+item.getDescription());
+		}
 	}
 	
 	void displayItem(Item item) {
 		System.out.println("Item "+item.getItem()+" "+item.getDescription()+" "+item.getPrice()+" "
-				+item.getAddedDate());
+				+item.getAddedDate()+item.getBoughtBy().getName());
 	}
 
 }

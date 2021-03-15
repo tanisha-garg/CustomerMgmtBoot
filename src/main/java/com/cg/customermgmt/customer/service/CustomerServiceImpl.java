@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements ICustomerService{
 		Customer customer = dao.findById(customerId);
 		Set<Item> itemSet = customer.getBoughtItems();
 		return itemSet;
-	}
+	}	
 	
 	public void validateName(String name) {
 		if(name == null || name.isEmpty()) {
@@ -65,6 +65,6 @@ public class CustomerServiceImpl implements ICustomerService{
 			throw new InvalidAmountException("Amount cannot be less than 0");
 		}
 	}
-	
+
 
 }
