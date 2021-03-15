@@ -53,6 +53,10 @@ public class CustomerUI {
 		tanisha = service.findById(tanishaId);
 		displayItem(buyChocolate);
 		display(tanisha);
+//		Item buyCholcolatep = itemService.buyItem(itemId, pallavi.getId());
+//		pallavi = service.findById(pallavi.getId());
+//		displayItem(buyCholcolatep);
+//		display(pallavi);
 		
 	}
 	

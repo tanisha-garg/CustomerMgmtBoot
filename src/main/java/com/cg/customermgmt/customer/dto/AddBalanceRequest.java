@@ -4,6 +4,10 @@ public class AddBalanceRequest {
 	
 	private Long customerId;
 	private double balance;
+	
+	public AddBalanceRequest() {
+		
+	}
 
 	public Long getCustomerId() {
 		return customerId;
@@ -20,6 +24,8 @@ public class AddBalanceRequest {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+	
+	
 	
 	
 

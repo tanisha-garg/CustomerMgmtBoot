@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.customermgmt.customer.dto.AddBalanceRequest;
-import com.cg.customermgmt.customer.dto.CustomerDetails;
+import com.cg.customermgmt.customer.dto.*;
 import com.cg.customermgmt.customer.entities.Customer;
 import com.cg.customermgmt.customer.service.ICustomerService;
 import com.cg.customermgmt.customer.util.CustomerUtil;
+import com.cg.customermgmt.items.entities.Item;
+import java.util.*;
 
 @RequestMapping("/customers")
 @RestController
@@ -29,6 +30,13 @@ public class CustomerRestController {
 		Customer customer = service.findById(customerId);
 		CustomerDetails details = util.toDetails(customer);
 		return details;
+	}
+	
+	@GetMapping(value = "/getItems/{id}")
+	public List<ItemBoughtByCustomer> getItemDetailsById(@PathVariable("id") Long customerId){
+		Set<Item> setItem = service.itemsBoughtByCustomer(customerId);
+		List<ItemBoughtByCustomer> itemList = util.toItemDetails(setItem);
+		return itemList;
 	}
 	
 	@PutMapping("/addAmount")
