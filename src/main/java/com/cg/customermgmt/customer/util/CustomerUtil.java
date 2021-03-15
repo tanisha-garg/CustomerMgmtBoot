@@ -1,11 +1,8 @@
 package com.cg.customermgmt.customer.util;
 
 import org.springframework.stereotype.Component;
-
 import com.cg.customermgmt.customer.dto.CustomerDetails;
 import com.cg.customermgmt.customer.entities.Customer;
-import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class CustomerUtil {

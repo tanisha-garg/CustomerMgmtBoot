@@ -1,6 +1,5 @@
 package com.cg.customermgmt.customer.dto;
 
-import com.cg.customermgmt.customer.entities.Account;
 
 public class CustomerDetails {
 	

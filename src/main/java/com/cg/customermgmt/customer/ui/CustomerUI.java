@@ -46,7 +46,7 @@ public class CustomerUI {
 		System.out.println("Finding an item with id");
 		String itemId = chocolate.getItem();
 		Item findItem = itemService.findById(itemId);
-		//displayItem(findItem);
+		displayItem(findItem);
 		
 		System.out.println("Buy an item");
 		Item buyChocolate = itemService.buyItem(itemId, tanishaId);
@@ -62,13 +62,20 @@ public class CustomerUI {
 		+account.getBalance()+" "+account.getCreated());
 		Set<Item> itemSet = customer.getBoughtItems();
 		for(Item item:itemSet) {
-			System.out.println(item.getItem()+" "+item.getDescription());
+			System.out.println(item.getItem()+" "+item.getDescription());	
 		}
 	}
 	
 	void displayItem(Item item) {
-		System.out.println("Item "+item.getItem()+" "+item.getDescription()+" "+item.getPrice()+" "
-				+item.getAddedDate()+item.getBoughtBy().getName());
+		if(item.getBoughtBy() == null) {
+			System.out.println("Item "+item.getItem()+" "+item.getDescription()+" "+item.getPrice()+" "
+					+item.getAddedDate());
+		}
+		else {
+			System.out.println("Item "+item.getItem()+" "+item.getDescription()+" "+item.getPrice()+" "
+					+item.getAddedDate()+" "+item.getBoughtBy().getName());
+		}
+		
 	}
 
 }
