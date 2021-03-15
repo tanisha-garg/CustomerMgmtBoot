@@ -38,10 +38,10 @@ public class CustomerUI {
 		display(tanishaAmount);
 		
 		Item chocolate = itemService.create(100.0, "Chocolate");
-		//displayItem(chocolate);
+		displayItem(chocolate);
 		
 		Item rice = itemService.create(200.0, "Rice");
-		//displayItem(rice);
+		displayItem(rice);
 		
 		System.out.println("Finding an item with id");
 		String itemId = chocolate.getItem();
@@ -53,10 +53,11 @@ public class CustomerUI {
 		tanisha = service.findById(tanishaId);
 		displayItem(buyChocolate);
 		display(tanisha);
-//		Item buyCholcolatep = itemService.buyItem(itemId, pallavi.getId());
-//		pallavi = service.findById(pallavi.getId());
-//		displayItem(buyCholcolatep);
-//		display(pallavi);
+		
+		Item buyRice = itemService.buyItem(rice.getItem(), pallavi.getId());
+		pallavi = service.findById(pallavi.getId());
+		displayItem(buyRice);
+		display(pallavi);
 		
 	}
 	

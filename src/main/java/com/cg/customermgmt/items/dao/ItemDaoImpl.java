@@ -1,3 +1,4 @@
+/*
 package com.cg.customermgmt.items.dao;
 
 import javax.persistence.EntityManager;
@@ -39,3 +40,4 @@ public class ItemDaoImpl implements IItemDao{
 	}
 
 }
+*/

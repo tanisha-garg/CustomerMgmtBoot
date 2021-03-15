@@ -1,3 +1,4 @@
+/*
 package com.cg.customermgmt.customer.dao;
 
 import java.time.LocalDateTime;
@@ -47,3 +48,4 @@ public class CustomerDaoImpl implements ICustomerDao{
 	}
 
 }
+*/

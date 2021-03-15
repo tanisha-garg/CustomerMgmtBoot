@@ -1,3 +1,4 @@
+/*
 package com.cg.customermgmt.items.dao;
 
 import com.cg.customermgmt.items.entities.Item;
@@ -11,3 +12,4 @@ public interface IItemDao {
 	Item findById(String itemId);
 
 }
+*/
